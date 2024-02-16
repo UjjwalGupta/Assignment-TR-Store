@@ -52,7 +52,6 @@ class NetworkApiServices extends BaseApiServices {
         return responseJson;
       case 400:
         throw Exception(_appStrings.invalidException);
-
       default:
         throw Exception(_appStrings.somethingWentWrong);
     }
