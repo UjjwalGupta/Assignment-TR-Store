@@ -7,6 +7,7 @@ import 'package:tr_store/res/routes/routes_name.dart';
 import 'package:tr_store/res/strings/app_strings.dart';
 import 'package:tr_store/view_models/product_list_view_model/product_list_view_model.dart';
 import 'package:tr_store/views/product_list/widgets/product_item.dart';
+import 'package:tr_store/views/product_list/widgets/shimmer_effect.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({super.key});
@@ -33,16 +34,14 @@ class _ProductListState extends State<ProductList> {
         body: Obx(() {
           switch (_productListViewModel.requestStatus.value) {
             case Status.LOADING:
-              return const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
+              return ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, i) {
+                    return const ShimmerEffect();
+                  });
             case Status.ERROR:
-              return Scaffold(
-                body: Center(
+              return Center(
                   child: Text(_appStrings.somethingWentWrong),
-                ),
               );
             case Status.SUCCESS:
               return ListView.builder(
