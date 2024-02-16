@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tr_store/data/resonse/status.dart';
 import 'package:tr_store/models/product_list/ProductModel.dart';
 import 'package:tr_store/res/components/app_toolbar.dart';
+import 'package:tr_store/res/routes/routes_name.dart';
 import 'package:tr_store/res/strings/app_strings.dart';
 import 'package:tr_store/view_models/product_list_view_model/product_list_view_model.dart';
 import 'package:tr_store/views/product_list/widgets/product_item.dart';
@@ -16,6 +17,7 @@ class ProductList extends StatefulWidget {
 
 class _ProductListState extends State<ProductList> {
   final _appStrings = AppStrings.instance;
+  final _routesName = RoutesName.instance;
   final _productListViewModel = Get.put(ProductListViewModel());
 
   @override
@@ -27,7 +29,7 @@ class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppToolbar(_appStrings.productList, false),
+        appBar: AppToolbar(_appStrings.productList, false, _routesName),
         body: Obx(() {
           switch (_productListViewModel.requestStatus.value) {
             case Status.LOADING:
