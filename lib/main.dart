@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:tr_store/res/routes/routes.dart';
+import 'package:tr_store/res/strings/app_strings.dart';
 
 void main() {
   runApp(TRStoreApp());
@@ -9,17 +10,18 @@ void main() {
 class TRStoreApp extends StatelessWidget {
   TRStoreApp({Key? key}) : super(key: key);
 
-  final appRoutes = AppRoutes.instance;
+  final _appRoutes = AppRoutes.instance;
+  final _appStrings = AppStrings.instance;
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: _appStrings.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      getPages: appRoutes.appRoutes(),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      getPages: _appRoutes.appRoutes(),
     );
   }
 }
