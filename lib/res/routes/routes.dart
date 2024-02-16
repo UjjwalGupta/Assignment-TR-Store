@@ -17,11 +17,11 @@ class AppRoutes {
         GetPage(
             name: routesName.productListScreen,
             page: () => const ProductList(),
-            transition: Transition.leftToRight),
+            transition: Transition.rightToLeft),
         GetPage(
             name: routesName.productDetailsScreen,
             page: () => const ProductDetails(),
-            transition: Transition.leftToRight),
+            transition: Transition.rightToLeft),
         GetPage(
             name: routesName.cartProductsScreen,
             page: () => const CartProducts(),

@@ -9,7 +9,7 @@ class AppToolbar extends AppBar {
               onPressed: () {
                 Get.back();
               },
-              icon: const Icon(Icons.arrow_back_ios_new),
+              icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white,),
             )
           : Container(),
       leadingWidth: isBackIcon?30:0,
