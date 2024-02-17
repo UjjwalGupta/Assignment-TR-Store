@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tr_store/models/product_list/ProductModel.dart';
@@ -25,13 +24,37 @@ class CartViewModel extends GetxController {
 
   void setProduct(ProductModel model) => product.value = model;
 
+  Future<void> checkExistingProductFromCart(ProductModel productModel) async {
+    await _cartRepository
+        .checkExistingProductFromCart(productModel)
+        .then((value) {
+      setRequestStatus(Status.SUCCESS);
+      if (value) {
+        _utils.showSnackBar(
+            _appStrings.error, _appStrings.productExistsInCart, Colors.yellow,
+            textColor: Colors.white);
+      } else {
+        insertProductToCart(productModel);
+      }
+    }).onError((error, stackTrace) {
+      setRequestStatus(Status.ERROR);
+      _utils.showSnackBar(
+          _appStrings.error, error.toString(), _appColor.redColor,
+          textColor: Colors.white);
+    });
+  }
+
   Future<void> insertProductToCart(ProductModel productModel) async {
     await _cartRepository.insertProductToCart(productModel).then((value) {
       setRequestStatus(Status.SUCCESS);
-      _utils.showSnackBar(_appStrings.success, "${productModel.title} ${_appStrings.addedToCart}", Colors.green, textColor: Colors.white);
+      _utils.showSnackBar(_appStrings.success,
+          "${productModel.title} ${_appStrings.addedToCart}", Colors.green,
+          textColor: Colors.white);
     }).onError((error, stackTrace) {
       setRequestStatus(Status.ERROR);
-      _utils.showSnackBar(_appStrings.error, error.toString(), _appColor.redColor, textColor: Colors.white);
+      _utils.showSnackBar(
+          _appStrings.error, error.toString(), _appColor.redColor,
+          textColor: Colors.white);
     });
   }
 
@@ -41,7 +64,8 @@ class CartViewModel extends GetxController {
       setProductList(value);
     }).onError((error, stackTrace) {
       setRequestStatus(Status.ERROR);
-      _utils.showSnackBar(_appStrings.error, error.toString(), _appColor.redColor,
+      _utils.showSnackBar(
+          _appStrings.error, error.toString(), _appColor.redColor,
           textColor: _appColor.blackColor);
     });
   }
@@ -52,21 +76,21 @@ class CartViewModel extends GetxController {
       setProduct(value);
     }).onError((error, stackTrace) {
       setRequestStatus(Status.ERROR);
-      _utils.showSnackBar(_appStrings.error, error.toString(), _appColor.redColor);
+      _utils.showSnackBar(
+          _appStrings.error, error.toString(), _appColor.redColor);
     });
   }
 
   void deleteProductFromCartById(ProductModel product) {
     _cartRepository.deleteProductFromCartById(product.id!).then((value) {
       setRequestStatus(Status.SUCCESS);
-      // List<ProductModel> products = productList.value;
-      // products.remove(product);
-      // setProductList(products);
       getAllProductsFromCart();
-      _utils.showSnackBar(_appStrings.success, _appStrings.removeSuccessFromCart, _appColor.redColor);
+      _utils.showSnackBar(_appStrings.success,
+          _appStrings.removeSuccessFromCart, _appColor.redColor);
     }).onError((error, stackTrace) {
       setRequestStatus(Status.ERROR);
-      _utils.showSnackBar(_appStrings.error, error.toString(), _appColor.redColor);
+      _utils.showSnackBar(
+          _appStrings.error, error.toString(), _appColor.redColor);
     });
   }
 }

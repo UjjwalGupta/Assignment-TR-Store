@@ -8,6 +8,10 @@ class CartRepository {
     return _cartDatabase.insertProductToCart(productModel: productModel);
   }
 
+  Future<bool> checkExistingProductFromCart(ProductModel productModel) async {
+    return _cartDatabase.checkExistingProductFromCart(productModel: productModel);
+  }
+
   Future<List<ProductModel>> getAllProductsFromCart() async {
     return _cartDatabase.fetchAllProducts();
   }

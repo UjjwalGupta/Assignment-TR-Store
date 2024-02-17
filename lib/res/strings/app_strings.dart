@@ -12,11 +12,13 @@ class AppStrings{
   String invalidException = "Invalid exception";
   String productList = "Product list";
   String details = "Details";
+  String price = "Price";
   String addToCart = "Add To Cart";
   String addedToCart = "added to cart successfully";
   String removeFromCart = "Remove from cart";
   String removeSuccessFromCart = "Product removed from cart successfully";
   String noProductInCart = "No products in your cart";
+  String productExistsInCart = "This product is already in your cart";
   String myCart = "My Carts";
   String success = "Success";
   String error = "Error";

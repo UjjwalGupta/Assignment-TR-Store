@@ -22,8 +22,9 @@ class ButtonRemoveFromCart extends StatelessWidget {
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
               textStyle: const TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold)),
+                  fontSize: 14, fontWeight: FontWeight.bold)),
           child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               const Icon(
                 Icons.delete_forever,

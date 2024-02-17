@@ -38,6 +38,16 @@ class ProductDetailsItem extends StatelessWidget {
             ),
           ),
           Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text(
+              '${_appString.price}: \$${_productDetailsViewModel.product.value.userId!}',
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               _productDetailsViewModel.product.value.content!,
@@ -51,12 +61,12 @@ class ProductDetailsItem extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 10),
             child: ElevatedButton(
                 onPressed: () {
-                  _cartViewModel.insertProductToCart(_productDetailsViewModel.product.value);
+                  _cartViewModel.checkExistingProductFromCart(_productDetailsViewModel.product.value);
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     textStyle: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold)),
+                        fontSize: 15, fontWeight: FontWeight.bold)),
                 child: Text(
                   _appString.addToCart,
                   style: const TextStyle(color: Colors.white),

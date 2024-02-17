@@ -47,7 +47,7 @@ class _CartProductsState extends State<CartProducts> {
                 itemBuilder: (context, i) {
                   return CartProductItem(
                       productModel: _cartViewModel.productList[i]);
-                }): Center(child: Text(_appStrings.noProductInCart, style: const TextStyle(fontSize: 25, color: Colors.black),),);
+                }): Center(child: Text(_appStrings.noProductInCart, style: const TextStyle(fontSize: 20),),);
         }
       }));
   }

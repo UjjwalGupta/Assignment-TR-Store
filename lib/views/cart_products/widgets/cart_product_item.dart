@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tr_store/models/product_list/ProductModel.dart';
+import 'package:tr_store/res/strings/app_strings.dart';
 import 'package:tr_store/views/cart_products/widgets/button_remove_cart.dart';
 
 class CartProductItem extends StatelessWidget {
   CartProductItem({super.key, required this.productModel});
 
   ProductModel productModel;
+  final _appString = AppStrings.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +32,20 @@ class CartProductItem extends StatelessWidget {
                 productModel.title!,
                 style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 18,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold),
               ),
             ),
+            productModel.userId != null?Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                '${_appString.price}: \$${productModel.userId!}',
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+              ),
+            ):Container(),
             ButtonRemoveFromCart(product: productModel,)
           ],
         ),

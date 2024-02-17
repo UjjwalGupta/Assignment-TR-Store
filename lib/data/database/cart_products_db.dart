@@ -17,6 +17,7 @@ class CartProductsDB {
     CREATE TABLE IF NOT EXISTS $_tableName (
     "id" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
+    "userId" INTEGER NOT NULL,
     "content" TEXT NOT NULL,
     "thumbnail" TEXT NOT NULL,
     PRIMARY KEY("id" AUTOINCREMENT)
@@ -26,9 +27,18 @@ class CartProductsDB {
   Future<int> insertProductToCart({required ProductModel productModel}) async {
     final database = await DatabaseService().database;
     return await database.rawInsert(
-      '''INSERT INTO $_tableName (title, content, thumbnail) VALUES (?,?,?)''',
-      [productModel.title, productModel.content, productModel.thumbnail],
+      '''INSERT INTO $_tableName (id, title, userId, content, thumbnail) VALUES (?,?,?,?,?)''',
+      [productModel.id, productModel.title, productModel.userId, productModel.content, productModel.thumbnail],
     );
+  }
+
+  Future<bool> checkExistingProductFromCart({required ProductModel productModel}) async {
+    final database = await DatabaseService().database;
+    var result = await database.rawQuery(
+      'SELECT EXISTS(SELECT 1 FROM $_tableName WHERE id="${productModel.id}")',
+    );
+    int? exists = Sqflite.firstIntValue(result);
+    return exists == 1;
   }
 
   Future<List<ProductModel>> fetchAllProducts() async {
