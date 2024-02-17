@@ -1,16 +1,22 @@
-import 'dart:convert';
-
+import 'package:tr_store/data/database/cart_products_db.dart';
 import 'package:tr_store/models/product_list/ProductModel.dart';
-import 'package:tr_store/res/app_url/app_url.dart';
-
-import '../../data/network/network_api_services.dart';
 
 class CartRepository {
-  final _networkApiService = NetworkApiServices.instance;
-  final _appUrl = AppUrl.instance;
+  final _cartDatabase = CartProductsDB.instance;
 
-  Future<ProductModel> getProductDetails(int productId) async {
-    dynamic response = await _networkApiService.getApi(_appUrl.productUrl, id: productId);
-    return ProductModel.fromJson(response);
+  Future<int> insertProductToCart(ProductModel productModel) async {
+    return _cartDatabase.insertProductToCart(productModel: productModel);
+  }
+
+  Future<List<ProductModel>> getAllProductsFromCart() async {
+    return _cartDatabase.fetchAllProducts();
+  }
+
+  Future<ProductModel> getProductFromCartById(int id) async {
+    return _cartDatabase.fetchProductById(id);
+  }
+
+  Future<int> deleteProductFromCartById(int id) async {
+    return _cartDatabase.deleteProduct(id);
   }
 }

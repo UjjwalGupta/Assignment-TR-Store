@@ -1,4 +1,4 @@
-import 'package:tr_store/data/resonse/status.dart';
+import 'package:tr_store/data/response/status.dart';
 
 class ApiResponse<T>{
   Status? status;

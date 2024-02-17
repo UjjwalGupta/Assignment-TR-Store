@@ -5,12 +5,15 @@ import 'package:tr_store/res/routes/routes.dart';
 import 'package:tr_store/res/routes/routes_name.dart';
 import 'package:tr_store/res/strings/app_strings.dart';
 
+import '../../../view_models/cart_view_model/cart_view_model.dart';
+
 class ProductItem extends StatelessWidget {
   ProductItem({super.key, required this.productModel});
 
   ProductModel productModel;
   final _appString = AppStrings.instance;
   final _routeNames = RoutesName.instance;
+  final _cartViewModel = Get.put(CartViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +50,8 @@ class ProductItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: ElevatedButton(
-                    onPressed: () {
-
+                    onPressed: () async{
+                     await _cartViewModel.insertProductToCart(productModel);
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,

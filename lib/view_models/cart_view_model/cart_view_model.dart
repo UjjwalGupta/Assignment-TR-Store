@@ -1,30 +1,72 @@
-import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tr_store/models/product_list/ProductModel.dart';
-import 'package:tr_store/repositories/product_details_repository/product_details_repository.dart';
+import 'package:tr_store/repositories/cart_repository/cart_repository.dart';
 import 'package:tr_store/res/colors/app_colors.dart';
+import 'package:tr_store/res/strings/app_strings.dart';
 import 'package:tr_store/utils/utils.dart';
 
-import '../../data/resonse/status.dart';
+import '../../data/response/status.dart';
 
-class CartViewModel extends GetxController{
-  final _productRepository = ProductDetailsRepository();
+class CartViewModel extends GetxController {
+  final _cartRepository = CartRepository();
   final _appColor = AppColors.instance;
+  final _appStrings = AppStrings.instance;
+  final _utils = Utils.instance;
 
   final requestStatus = Status.LOADING.obs;
   final product = ProductModel().obs;
+  final productList = <ProductModel>[].obs;
 
   void setRequestStatus(Status value) => requestStatus.value = value;
-  void setProductList(ProductModel model) => product.value = model;
 
-  void getProductDetails(int productId){
-    _productRepository.getProductDetails(productId).then((value){
+  void setProductList(List<ProductModel> model) => productList.value = model;
+
+  void setProduct(ProductModel model) => product.value = model;
+
+  Future<void> insertProductToCart(ProductModel productModel) async {
+    await _cartRepository.insertProductToCart(productModel).then((value) {
+      setRequestStatus(Status.SUCCESS);
+      _utils.showSnackBar(_appStrings.success, "${productModel.title} ${_appStrings.addedToCart}", Colors.green, textColor: Colors.white);
+    }).onError((error, stackTrace) {
+      setRequestStatus(Status.ERROR);
+      _utils.showSnackBar(_appStrings.error, error.toString(), _appColor.redColor, textColor: Colors.white);
+    });
+  }
+
+  void getAllProductsFromCart() {
+    _cartRepository.getAllProductsFromCart().then((value) {
       setRequestStatus(Status.SUCCESS);
       setProductList(value);
-    }).onError((error, stackTrace){
+    }).onError((error, stackTrace) {
       setRequestStatus(Status.ERROR);
-      Utils.showSnackBar("Error", error.toString(), color: _appColor.blackColor);
+      _utils.showSnackBar(_appStrings.error, error.toString(), _appColor.redColor,
+          textColor: _appColor.blackColor);
+    });
+  }
+
+  void getProductFromCartById(int productId) {
+    _cartRepository.getProductFromCartById(productId).then((value) {
+      setRequestStatus(Status.SUCCESS);
+      setProduct(value);
+    }).onError((error, stackTrace) {
+      setRequestStatus(Status.ERROR);
+      _utils.showSnackBar(_appStrings.error, error.toString(), _appColor.redColor);
+    });
+  }
+
+  void deleteProductFromCartById(ProductModel product) {
+    _cartRepository.deleteProductFromCartById(product.id!).then((value) {
+      setRequestStatus(Status.SUCCESS);
+      // List<ProductModel> products = productList.value;
+      // products.remove(product);
+      // setProductList(products);
+      getAllProductsFromCart();
+      _utils.showSnackBar(_appStrings.success, _appStrings.removeSuccessFromCart, _appColor.redColor);
+    }).onError((error, stackTrace) {
+      setRequestStatus(Status.ERROR);
+      _utils.showSnackBar(_appStrings.error, error.toString(), _appColor.redColor);
     });
   }
 }

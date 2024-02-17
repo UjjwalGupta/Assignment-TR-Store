@@ -10,21 +10,17 @@ class AppRoutes {
   static final AppRoutes _instance = AppRoutes._internal();
   static AppRoutes get instance => _instance;
 
-
   final routesName = RoutesName.instance;
 
   appRoutes() => [
         GetPage(
             name: routesName.productListScreen,
-            page: () => const ProductList(),
-            transition: Transition.rightToLeft),
+            page: () => const ProductList(),),
         GetPage(
             name: routesName.productDetailsScreen,
-            page: () => const ProductDetails(),
-            transition: Transition.rightToLeft),
+            page: () => const ProductDetails(),),
         GetPage(
             name: routesName.cartProductsScreen,
-            page: () => const CartProducts(),
-            transition: Transition.leftToRight),
+            page: () => const CartProducts(),),
       ];
 }

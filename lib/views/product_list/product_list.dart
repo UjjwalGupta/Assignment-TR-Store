@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tr_store/data/resonse/status.dart';
-import 'package:tr_store/models/product_list/ProductModel.dart';
+import 'package:tr_store/data/response/status.dart';
 import 'package:tr_store/res/components/app_toolbar.dart';
 import 'package:tr_store/res/routes/routes_name.dart';
 import 'package:tr_store/res/strings/app_strings.dart';
@@ -30,7 +29,7 @@ class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppToolbar(_appStrings.productList, false, _routesName),
+        appBar: AppToolbar(_appStrings.productList, false, true, routesName: _routesName),
         body: Obx(() {
           switch (_productListViewModel.requestStatus.value) {
             case Status.LOADING:

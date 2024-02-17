@@ -3,21 +3,21 @@ import 'package:get/get.dart';
 import 'package:tr_store/res/routes/routes_name.dart';
 
 class AppToolbar extends AppBar {
-  AppToolbar(String title, bool isBackIcon, RoutesName routesName, {super.key})
+  AppToolbar(String title, bool isBackIcon, bool isCartIcon, {RoutesName? routesName, super.key})
       : super(
           backgroundColor: Colors.green,
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 10),
-              child: InkWell(
+              child: isCartIcon?InkWell(
                   onTap: () {
-                    Get.toNamed(routesName.cartProductsScreen);
+                    Get.toNamed(routesName!.cartProductsScreen);
                   },
                   child: const Icon(
                     Icons.add_shopping_cart,
                     size: 30,
                     color: Colors.white,
-                  )),
+                  )):Container(),
             ),
           ],
           leading: isBackIcon

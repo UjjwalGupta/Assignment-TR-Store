@@ -5,6 +5,8 @@ import 'package:tr_store/data/database/cart_products_db.dart';
 class DatabaseService {
   Database? _database;
 
+  final _cartDB = CartProductsDB.instance;
+
   Future<Database> get database async {
     if (_database != null) {
       return _database!;
@@ -30,5 +32,5 @@ class DatabaseService {
   }
 
   Future<void> create(Database database, int version) async =>
-      await CartProductsDB().createTable(database);
+      await _cartDB.createTable(database);
 }
