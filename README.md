@@ -17,6 +17,7 @@ Steps of this project:
 6. Toolbar of product list and product details page will show a cart button in the top right corner.
 7. When tap on cart button from toolbar it will redirect you to My cart page where list of your cart products will show.
 8. You can simply remove from cart by tapping remove from cart button in cart list page.
+9. Both Main and Master branch are updated.
 
 Technology that used in this project:
 1. Latest version of flutter and Dart sdk.
