@@ -9,7 +9,7 @@ class ProductDetailsItem extends StatelessWidget {
   ProductDetailsItem({super.key});
 
   final ProductDetailsViewModel _productDetailsViewModel = Get.find();
-  final CartViewModel _cartViewModel = Get.find();
+  final _cartViewModel = Get.put(CartViewModel());
   final _appString = AppStrings.instance;
 
   @override
@@ -37,15 +37,12 @@ class ProductDetailsItem extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Text(
-              '${_appString.price}: \$${_productDetailsViewModel.product.value.userId!}',
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-            ),
+          Text(
+            '${_appString.price}: \$${_productDetailsViewModel.product.value.userId!}',
+            style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

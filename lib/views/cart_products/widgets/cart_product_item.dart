@@ -37,7 +37,7 @@ class CartProductItem extends StatelessWidget {
               ),
             ),
             productModel.userId != null?Padding(
-              padding: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(bottom: 10),
               child: Text(
                 '${_appString.price}: \$${productModel.userId!}',
                 style: const TextStyle(

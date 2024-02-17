@@ -4,6 +4,7 @@ import 'package:tr_store/res/components/app_toolbar.dart';
 import 'package:tr_store/res/strings/app_strings.dart';
 import 'package:tr_store/view_models/product_details_view_model/product_details_view_model.dart';
 import 'package:tr_store/views/product_details/widgets/product_details_item.dart';
+import 'package:tr_store/views/product_details/widgets/product_details_shimmer.dart';
 
 import '../../data/response/status.dart';
 import '../../res/routes/routes_name.dart';
@@ -34,21 +35,21 @@ class _ProductDetailsState extends State<ProductDetails> {
       body: Obx(() {
         switch (_productDetailsViewModel.requestStatus.value) {
           case Status.LOADING:
-            return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+            return const ProductDetailsShimmer();
           case Status.ERROR:
-            return Scaffold(
-              body: Center(
-                child: Text(_appString.somethingWentWrong),
-              ),
+            return Center(
+                child: Text(_appString.somethingWentWrong)
             );
           case Status.SUCCESS:
             return ProductDetailsItem();
         }
       }),
     );
+  }
+
+  @override
+  void dispose() {
+    Get.delete<ProductDetailsViewModel>();
+    super.dispose();
   }
 }

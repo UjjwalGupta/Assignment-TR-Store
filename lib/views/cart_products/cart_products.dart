@@ -51,4 +51,10 @@ class _CartProductsState extends State<CartProducts> {
         }
       }));
   }
+
+  @override
+  void dispose() {
+    Get.delete<CartViewModel>();
+    super.dispose();
+  }
 }

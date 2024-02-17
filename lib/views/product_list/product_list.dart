@@ -52,4 +52,10 @@ class _ProductListState extends State<ProductList> {
           }
         }));
   }
+
+  @override
+  void dispose() {
+    Get.delete<ProductListViewModel>();
+    super.dispose();
+  }
 }

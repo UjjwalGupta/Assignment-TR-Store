@@ -34,7 +34,7 @@ class AppToolbar extends AppBar {
           leadingWidth: isBackIcon ? 30 : 0,
           title: Text(
             title,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
         );
 }
