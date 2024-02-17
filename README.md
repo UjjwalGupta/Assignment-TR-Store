@@ -1,16 +1,29 @@
-# tr_store
+# TR Store
 
-A new Flutter project.
+TR Store Flutter assignment project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a assignment project of TransMedia Inc.
 
-A few resources to get you started if this is your first Flutter project:
+Steps of this project:
+1. It's just a simple flutter project, can run by any Jetbrains IDE(Android studio recommended).
+   Can run this project by simply run button or "flutter run" command.
+2. At first the product list page will appear. Shimmer effect will be shown until the product list come from server.
+3. Each product's image, title, price and cart adding button will be there in product list page.
+4. By tapping in a single product, it will redirect to product details page where shimmer effect will show until the details 
+   come from server.
+5. You can add product to your cart by tapping in add to cart button from product list and product details page.
+6. Toolbar of product list and product details page will show a cart button in the top right corner.
+7. When tap on cart button from toolbar it will redirect you to My cart page where list of your cart products will show.
+8. You can simply remove from cart by tapping remove from cart button in cart list page.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Technology that used in this project:
+1. Latest version of flutter and Dart sdk.
+2. Getx state management library.
+3. Shimmer effect.
+4. SQFlite library for database.
+5. MVVM architecture pattern.
+6. Singleton design pattern.
+7. SOLID principle. 
+8. Inheritance, Abstraction.
