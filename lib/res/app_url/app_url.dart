@@ -6,7 +6,5 @@ class AppUrl{
 
   static AppUrl get instance => _instance;
 
-  String baseUrl = 'https://jsonplaceholder.org';
-  // String productUrl = '${instance.baseUrl}/posts';
   String productUrl = 'https://jsonplaceholder.org/posts';
 }
