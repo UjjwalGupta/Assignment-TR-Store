@@ -19,11 +19,11 @@ class ConnectivityViewModel extends GetxController {
     if (connectivityResult == ConnectivityResult.none) {
       _utils.showSnackBar(
           _appStrings.internet, _appStrings.noInternetConnection, Colors.red,
-          duration: const Duration(seconds: 3));
+          duration: const Duration(seconds: 5));
     } else {
       _utils.showSnackBar(
           _appStrings.internet, _appStrings.internetConnected, Colors.green,
-          duration: const Duration(seconds: 3));
+          duration: const Duration(seconds: 5));
     }
   }
 }

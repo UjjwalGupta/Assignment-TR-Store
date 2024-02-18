@@ -12,7 +12,7 @@ class AppStrings{
   String internetConnected = "Internet connected";
   String timeOut = "Timeout";
   String invalidException = "Invalid exception";
-  String productList = "Product list";
+  String trStoreProducts = "TR Store Products";
   String details = "Details";
   String price = "Price";
   String addToCart = "Add To Cart";

@@ -29,7 +29,7 @@ class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppToolbar(_appStrings.productList, false, true, routesName: _routesName),
+        appBar: AppToolbar(_appStrings.trStoreProducts, false, true, routesName: _routesName),
         body: Obx(() {
           switch (_productListViewModel.requestStatus.value) {
             case Status.LOADING:
