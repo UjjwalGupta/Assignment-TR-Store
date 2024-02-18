@@ -32,7 +32,7 @@ class CartViewModel extends GetxController {
       if (value) {
         _utils.showSnackBar(
             _appStrings.error, _appStrings.productExistsInCart, Colors.yellow,
-            textColor: Colors.white);
+            textColor: Colors.black);
       } else {
         insertProductToCart(productModel);
       }

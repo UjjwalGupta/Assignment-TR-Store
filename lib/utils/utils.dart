@@ -12,7 +12,7 @@ class Utils {
   static Utils get instance => _instance;
 
   showSnackBar(String title, String message, Color backgroundColor,
-      {Color? textColor}) {
+      {Color? textColor, Duration? duration}) {
     Get.snackbar(title, message,
         titleText: Text(title,
             style: TextStyle(
@@ -29,6 +29,6 @@ class Utils {
         backgroundColor: backgroundColor,
         colorText: textColor ?? Colors.white,
         snackPosition: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 5));
+        duration: duration ?? const Duration(seconds: 5));
   }
 }

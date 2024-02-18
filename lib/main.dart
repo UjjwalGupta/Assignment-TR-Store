@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 import 'package:tr_store/res/routes/routes.dart';
 import 'package:tr_store/res/strings/app_strings.dart';
+import 'package:tr_store/utils/connectivity_injection.dart';
+import 'package:tr_store/view_models/connectivity_view_model/connectivity_view_model.dart';
 
-void main() {
+void main() async {
   runApp(TRStoreApp());
+  ConnectivityInjection.init();
 }
 
 class TRStoreApp extends StatelessWidget {

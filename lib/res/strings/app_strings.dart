@@ -8,6 +8,8 @@ class AppStrings{
 
   String appTitle = "TR Store";
   String somethingWentWrong = "Something went wrong";
+  String noInternetConnection = "No internet connection";
+  String internetConnected = "Internet connected";
   String timeOut = "Timeout";
   String invalidException = "Invalid exception";
   String productList = "Product list";
@@ -22,5 +24,6 @@ class AppStrings{
   String myCart = "My Carts";
   String success = "Success";
   String error = "Error";
+  String internet = "Internet";
 
 }

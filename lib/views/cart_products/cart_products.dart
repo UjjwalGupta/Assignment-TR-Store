@@ -28,28 +28,35 @@ class _CartProductsState extends State<CartProducts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppToolbar(_appStrings.myCart, true, false),
-      body: Obx(() {
-        switch (_cartViewModel.requestStatus.value) {
-          case Status.LOADING:
-            return ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, i) {
-                  return const ShimmerEffect();
-                });
-          case Status.ERROR:
-            return Center(
-              child: Text(_appStrings.somethingWentWrong),
-            );
-          case Status.SUCCESS:
-            return _cartViewModel.productList.isNotEmpty? ListView.builder(
-                itemCount: _cartViewModel.productList.length,
-                itemBuilder: (context, i) {
-                  return CartProductItem(
-                      productModel: _cartViewModel.productList[i]);
-                }): Center(child: Text(_appStrings.noProductInCart, style: const TextStyle(fontSize: 20),),);
-        }
-      }));
+        appBar: AppToolbar(_appStrings.myCart, true, false),
+        body: Obx(() {
+          switch (_cartViewModel.requestStatus.value) {
+            case Status.LOADING:
+              return ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, i) {
+                    return const ShimmerEffect();
+                  });
+            case Status.ERROR:
+              return Center(
+                child: Text(_appStrings.somethingWentWrong),
+              );
+            case Status.SUCCESS:
+              return _cartViewModel.productList.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: _cartViewModel.productList.length,
+                      itemBuilder: (context, i) {
+                        return CartProductItem(
+                            productModel: _cartViewModel.productList[i]);
+                      })
+                  : Center(
+                      child: Text(
+                        _appStrings.noProductInCart,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    );
+          }
+        }));
   }
 
   @override

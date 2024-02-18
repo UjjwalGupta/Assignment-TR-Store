@@ -37,6 +37,7 @@ dependencies:
   get: ^4.6.6
   shimmer: ^3.0.0
   sqflite: ^2.3.2
+  connectivity_plus: ^5.0.2
 
 dev_dependencies:
   flutter_test:
