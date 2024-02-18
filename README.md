@@ -14,10 +14,11 @@ Steps of this project:
 4. By tapping in a single product, it will redirect to product details page where shimmer effect will show until the details 
    come from server.
 5. You can add product to your cart by tapping in add to cart button from product list and product details page.
-6. Toolbar of product list and product details page will show a cart button in the top right corner.
-7. When tap on cart button from toolbar it will redirect you to My cart page where list of your cart products will show.
-8. You can simply remove from cart by tapping remove from cart button in cart list page.
-9. Both Main and Master branch are updated.
+6. If any product already exists in your cart list, then it will not cart again and will show a snackbar message. 
+7. Toolbar of product list and product details page will show a cart button in the top right corner.
+8. When tap on cart button from toolbar it will redirect you to My cart page where list of your cart products will show.
+9. You can simply remove from cart by tapping remove from cart button in cart list page.
+10. Both Main and Master branch are updated.
 
 Technology that used in this project:
 1. Latest version of flutter and Dart sdk.
@@ -27,4 +28,4 @@ Technology that used in this project:
 5. MVVM architecture pattern.
 6. Singleton design pattern.
 7. SOLID principle. 
-8. Inheritance, Abstraction.
+8. Object-oriented programming concepts
